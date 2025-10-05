@@ -92,9 +92,10 @@ function TabNavigator() {
   return (
     <Tab.Navigator
       tabBar={(props) => <CustomTabBar {...props} />}
-      screenOptions={{
-        headerShown: false
-      }}
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarStyle: { display: 'none' }
+      })}
     >
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Profile" component={ProfileStack} />
@@ -102,7 +103,17 @@ function TabNavigator() {
   );
 }
 
-function CustomTabBar({ state, descriptors, navigation }: any) {
+function CustomTabBar({ state, navigation }: any) {
+  const currentRoute = state.routes[state.index];
+  const nestedState = currentRoute.state;
+
+  // 如果嵌套路由存在且不是第一个屏幕，隐藏 TabBar
+  const shouldHideTabBar = nestedState && nestedState.index > 0;
+
+  if (shouldHideTabBar) {
+    return null;
+  }
+
   return (
     <View style={styles.tabBar}>
       {/* <BlurView style={styles.blurView} blurType="light" blurAmount={40} /> */}
