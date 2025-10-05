@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { View, Text, Button, TouchableOpacity, StyleSheet, ImageBackground, useColorScheme } from 'react-native';
+import { NavigationContainer, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import { BlurView } from '@sbaiahmed1/react-native-blur';
@@ -11,18 +11,23 @@ const Stack = createNativeStackNavigator();
 
 function HomeScreen({ navigation }: any) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ fontSize: 24, marginBottom: 20 }}>Home</Text>
-      <Button
-        title="Go to Home Detail"
-        onPress={() => navigation.navigate('HomeDetail')}
-      />
-      <View style={{ marginTop: 10 }}>
+    <View style={{ flex: 1 }}>
+      <ImageBackground
+        source={{uri: 'https://upload.linkword.vip/test/image.png'}}
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      >
+        <Text style={{ fontSize: 24, marginBottom: 20 }}>Home</Text>
         <Button
-          title="Go to Settings"
-          onPress={() => navigation.navigate('Settings')}
+          title="Go to Home Detail"
+          onPress={() => navigation.navigate('HomeDetail')}
         />
-      </View>
+        <View style={{ marginTop: 10 }}>
+          <Button
+            title="Go to Settings"
+            onPress={() => navigation.navigate('Settings')}
+          />
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -117,7 +122,9 @@ function CustomTabBar({ state, navigation }: any) {
   return (
     <View style={styles.tabBar}>
       {/* <BlurView style={styles.blurView} blurType="light" blurAmount={40} /> */}
-      <BlurView2 style={styles.blurView} type="light" radius={40} />
+      <BlurView2 style={styles.blurView} type="light" radius={10}>
+        <Text style={{ color: 'transparent' }}>Hello</Text>
+      </BlurView2>
       {state.routes.map((route: any, index: number) => {
         const isFocused = state.index === index;
 
@@ -151,8 +158,18 @@ function CustomTabBar({ state, navigation }: any) {
 }
 
 export default function App() {
+  const colorScheme = useColorScheme();
+  const baseTheme = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
+  const navigationTheme = {
+    ...baseTheme,
+    colors: {
+      ...baseTheme.colors,
+      // card: 'transparent',
+      // background: 'transparent',
+    },
+  };
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navigationTheme}>
       <Stack.Navigator screenOptions={{ headerShown: true }}>
         <Stack.Screen
           name="Main"
@@ -176,7 +193,7 @@ const styles = StyleSheet.create({
     height: 60,
     borderTopWidth: 1,
     borderTopColor: '#e0e0e0',
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
   },
   tabItem: {
     flex: 1,
@@ -199,5 +216,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: '100%',
     height: '100%',
+    zIndex: -1
   },
 });
