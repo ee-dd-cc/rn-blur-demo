@@ -156,7 +156,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    position: 'absolute',
+    position: 'absolute', // todo bug here
     bottom: 0,
     left: 0,
     right: 0,
