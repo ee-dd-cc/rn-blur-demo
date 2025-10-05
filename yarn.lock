@@ -1019,6 +1019,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@danielsaraldi/react-native-blur-view@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@danielsaraldi/react-native-blur-view/-/react-native-blur-view-0.7.2.tgz#46284a7389fe79d5698edb16b068a528c692e9ca"
+  integrity sha512-++MX1Y6US0VnUMPdV0nQi6/ol2mA97mU2mxsyFUsy+aPESvIuwCe8dPdy+5MEDCGtwuccUF+fcMWoCVEFpwHPA==
+
 "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.9.0.tgz#7308df158e064f0dd8b8fdb58aa14fa2a7f913b3"
@@ -1711,6 +1716,14 @@
   dependencies:
     invariant "^2.2.4"
     nullthrows "^1.1.1"
+
+"@react-navigation/bottom-tabs@^7.4.8":
+  version "7.4.8"
+  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-7.4.8.tgz#a7624d70f5cdc4ad3a270378f09cbdf5fdabdc34"
+  integrity sha512-W85T9f5sPA2zNnkxBO0PF0Jg9CRAMYqD9hY20dAhuVM5I+qiCqhW7qLveK59mlbtdXuGmieit6FK3inKmXzL7A==
+  dependencies:
+    "@react-navigation/elements" "^2.6.5"
+    color "^4.2.3"
 
 "@react-navigation/core@^7.12.4":
   version "7.12.4"
